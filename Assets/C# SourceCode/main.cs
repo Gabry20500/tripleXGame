@@ -11,6 +11,9 @@ using Random = UnityEngine.Random;
 
 public class main : MonoBehaviour
 {
+    //Level Text
+    [SerializeField] private Text lvTex;
+    
     //Error message
     [SerializeField] private Image ErrorPannel;
     [SerializeField] private Text ErrorTitle;
@@ -35,7 +38,7 @@ public class main : MonoBehaviour
     int min = 1, max = 10;
     int counter = 3;
     private List<int> RandNum = new List<int>(3);
-    
+    private int lv = 1;
     
     // Start is called before the first frame update
     void Start()
@@ -132,7 +135,7 @@ public class main : MonoBehaviour
                 }
                 else  if(input != RandNum.ToString() && input != null)
                 {
-                    ErrorMessageActovation();
+                    //ErrorMessageActovation();
                     input = null;
                     inputfield.Select();
                     inputfield.text = "";
@@ -144,6 +147,7 @@ public class main : MonoBehaviour
         {
             max = max + 5;
             counter = 3;
+            lv = lv + 1;
             GenerateRandomNum();
         }
     }
@@ -168,6 +172,7 @@ public class main : MonoBehaviour
 
     private void PrintX()
     {
+        lvTex.text = lv.ToString();
         string XValue = "X";
         Result1.text = XValue;
         Result2.text = XValue;
